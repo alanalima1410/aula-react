@@ -1,0 +1,72 @@
+aula node.js
+comandos iniciais:
+npm ou yarn
+npm -v (verifica se esta instalado o npm)
+node -v (verifica a versão do node)
+npm install -g yarn (para instalar o yarn)
+yarn init (inicializa o projeto) vai dando enter em todas as questões
+a partir dai ele vai criar a pg packagejson
+depois cria na raiz o index.js
+dentro da pasta packagejson:
+{
+  "name": "aula.node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
+no cmd: yarn start (inicia a aplicação)
+no cmd: node index.js (inicia a aplicação)
+no cmd: yarn start
+agora instala o express
+cmd: yarn add express
+
+no index.js:
+
+const express = require("express");
+const app = express();
+app.listen(3001, ()=>{
+    console.log("Aplicação iniciada");
+});
+
+no cmd: yarn start
+
+ctrl+c para a aplicação
+
+acrescenta no index.js:
+
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+    res.send('Bem vindo');
+});
+
+app.listen(3001, ()=>{
+    console.log("Aplicação iniciada");
+});
+
+yarn add -D nodemon (vai rodando sozinho sem precisar ficar dando yarn start)
+yarn start
+
+cria na pasta raiz uma nova pasta chamada rotas
+em rotas novo arquivo chamado usuario.js
+dentro dele:
+const { Router } = require("express");
+const router = Router();
+
+router.get('/', (req, res) => {
+    res.json([
+        {
+            nome: "Alana",
+        },
+        {
+            nome: "Alan",
+        },
+    ]);
+});
+
+module.exports = router;
+
